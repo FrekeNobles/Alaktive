@@ -5,7 +5,8 @@ const taskStatus = document.querySelector(".status");
 const timeRemainingElement = document.querySelector(".time-remaining");
 const dueDateElement = document.querySelector(".due-date");
 const priorityElement = document.querySelector(".priority");
-
+const editButton = document.querySelector(".edit-btn");
+const deleteButton = document.querySelector(".delete-btn")
 
 //CHECKBOX BEHAVIOUR
 checkbox.addEventListener("change", () => {
@@ -49,6 +50,7 @@ function updateTimeRemaining() {
   }
 
   timeRemainingElement.textContent = text;
+  timeRemainingElement.setAttribute("datetime", dueDateElement.getAttribute("datetime"));
 }
 
 // Run immediately
@@ -60,22 +62,24 @@ setInterval(updateTimeRemaining, 60000);
 
 
 // PRIORITY STYLING
+
+const priorityMap = {
+  high: "High",
+  medium: "Medium",
+  low: "Low"
+};
+
 function applyPriorityStyles() {
   const priority = priorityElement.dataset.priority;
 
-  card.classList.remove("priority-high", "priority-medium", "priority-low");
+  priorityElement.textContent = priorityMap[priority] ?? priority;
 
-  if (priority === "high") {
-    card.classList.add("priority-high");
-  } else if (priority === "medium") {
-    card.classList.add("priority-medium");
-    priorityElement.textContent = "Medium";
-    priorityElement.dataset.status = "medium";
-  } else if (priority === "low") {
-    card.classList.add("priority-low");
-    priorityElement.textContent = "Low";
-    priorityElement.dataset.status = "low";
-  }
+  card.classList.remove("priority-high", "priority-medium", "priority-low");
+  priorityElement.classList.remove("priority-high", "priority-medium", "priority-low");
+
+  card.classList.add(`priority-${priority}`);
+  priorityElement.classList.add(`priority-${priority}`);
 }
 
 applyPriorityStyles();
+

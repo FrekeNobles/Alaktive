@@ -27,8 +27,6 @@ main {
   padding: 20px;
   border-radius: 12px;
 
-  /* border-left: 6px solid #e53935; */
-
   box-shadow:
     4px 0px 6px rgba(0, 0, 0, 0.05),
     0px 12px 24px rgba(0, 0, 0, 0.2);
@@ -38,6 +36,19 @@ main {
   gap: 12px;
 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Priority Borders */
+.card.priority-high {
+  border-left: 6px solid #e53935;
+}
+
+.card.priority-medium {
+  border-left: 6px solid #f9a825;
+}
+
+.card.priority-low {
+  border-left: 6px solid #43a047;
 }
 
 /* Hover lift */
@@ -76,28 +87,26 @@ main {
 
 /* PRIORITY */
 
-/* Priority Borders */
-.priority-high {
-  border-left: 6px solid #e53935;
-  
-}
-
-.priority-medium {
-  border-left: 6px solid #f9a825;
-}
-
-.priority-low {
-  border-left: 6px solid #43a047;
-
-}
-
 .priority {
   font-size: 0.75rem;
   padding: 4px 8px;
   border-radius: 999px;
   font-weight: 600;
+}
+
+.priority.priority-high {
   background: #ffe5e5;
   color: #c62828;
+}
+
+.priority.priority-medium {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.priority.priority-low {
+  background: #e8f5e9;
+  color: #2e7d32;
 }
 
 /* STATUS */
