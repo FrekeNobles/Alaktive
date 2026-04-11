@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5efe6; 
+  background-color: #f5efe6;
   color: #1a1a1a;
 }
 
@@ -19,7 +19,7 @@ main {
   padding: 20px;
 }
 
-/*  Card Styling */
+/* CARD */
 [data-testid="test-todo-card"] {
   background: #f0f0f0;
   max-width: 480px;
@@ -27,33 +27,29 @@ main {
   padding: 20px;
   border-radius: 12px;
 
-  /* left border */
-  border-left: 6px solid #e53935; /* default HIGH priority */
+  border-left: 6px solid #e53935;
 
-  /* Shadow */
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.1),
-    0 12px 20px rgba(0, 0, 0, 0.1);
-
-  /* Slight rotation */
-  transform: rotate(-4deg);
+    4px 0px 6px rgba(0, 0, 0, 0.05),   /* faint right */
+    0px 12px 24px rgba(0, 0, 0, 0.2); /* strong bottom */
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Hover lift */
 [data-testid="test-todo-card"]:hover {
-  transform: rotate(0deg) translateY(-4px);
+  transform: translateY(-4px);
+
   box-shadow:
-    0 6px 10px rgba(0, 0, 0, 0.06),
-    0 16px 28px rgba(0, 0, 0, 0.1);
+    6px 0px 10px rgba(0, 0, 0, 0.06),
+    0px 18px 30px rgba(0, 0, 0, 0.22);
 }
 
-/*Top Section */
+/* HEADER */
 header {
   display: flex;
   align-items: center;
@@ -67,15 +63,24 @@ header div {
   gap: 8px;
 }
 
-
-/* Title */
+/* TITLE */
 [data-testid="test-todo-title"] {
   font-size: 1.2rem;
   font-weight: 600;
   flex: 1;
+  padding-bottom: 0;
+  margin-bottom: 2px; 
 }
 
-/* Priority Badge */
+/* DESCRIPTION */
+[data-testid="test-todo-description"] {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  margin-top: 0; 
+}
+
+/* PRIORITY */
 [data-testid="test-todo-priority"] {
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -85,25 +90,18 @@ header div {
   font-weight: 600;
 }
 
-/*Description */
-[data-testid="test-todo-description"] {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-/*Status Pill */
+/* STATUS */
 [data-testid="test-todo-status"] {
   display: inline-block;
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #e0e0e0;
-  color: #333;
+  background: #f1e46f;
+  color: #504803;
   width: fit-content;
 }
 
-/* Time Section */
+/* TIME */
 section time {
   display: block;
   text-align: center;
@@ -119,7 +117,7 @@ section time {
   margin-top: 4px;
 }
 
-/* Tags */
+/* TAGS */
 [data-testid="test-todo-tags"] {
   display: flex;
   flex-wrap: wrap;
@@ -131,46 +129,66 @@ section time {
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #fff;
+  background: #f3ddbc;
+  color: #53432b;
 }
 
-/* footer */
-/* Checkbox */
-[data-testid="test-todo-complete-toggle"] {
-  cursor: pointer;
-}
-
+/* FOOTER */
 footer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
+/* CHECKBOX */
+[data-testid="test-todo-complete-toggle"] + label {
+  cursor: pointer;
+  font-size: 0.75rem; 
+  color: #444;
+}
+
+input[type="checkbox"] {
+  accent-color: #444;
+}
+
+/* BUTTON  */
 button {
   padding: 6px 12px;
-  border: none;
   border-radius: 6px;
-  background: #1a1a1a;
+  background: #3f3f3f;
   color: #fff;
   cursor: pointer;
   font-size: 0.8rem;
+
+  border: 2px solid transparent;
+  transition: 0.2s ease;
 }
 
 button:hover {
-  background: #333;
+  background: #fff;
+  border-color: #3f3f3f;
+  color: #3f3f3f;
 }
 
-/* Focus states */
+/* FOCUS STATES */
 button:focus,
 input:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Completed State */
+/* COMPLETED STATE */
+.completed {
+  opacity: 0.7;
+}
+
 .completed [data-testid="test-todo-title"] {
   text-decoration: line-through;
   color: #888;
+}
+
+.completed [data-testid="test-todo-description"] {
+  text-decoration: line-through;
 }
 
 .completed [data-testid="test-todo-status"] {
@@ -178,18 +196,18 @@ input:focus {
   color: #0f5132;
 }
 
-/* Responsiveness */
+/* RESPONSIVE */
 @media (max-width: 480px) {
   [data-testid="test-todo-card"] {
-    transform: none; /* remove tilt on small screens */
+    transform: none;
   }
 
   header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
   }
-
+  
   footer {
+
     justify-content: space-between;
   }
 }
