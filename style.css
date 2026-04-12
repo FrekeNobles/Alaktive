@@ -57,12 +57,6 @@ main {
   gap: 10px;
 }
 
-.header div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 /* TITLE */
 .title {
   font-size: 1.2rem;
@@ -102,7 +96,7 @@ main {
 }
 
 /* TIME */
-section time {
+.dates time {
   display: block;
   text-align: center;
   font-size: 0.9rem;
