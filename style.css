@@ -20,7 +20,7 @@ main {
 }
 
 /* CARD */
-[data-testid="test-todo-card"] {
+.card {
   background: #f0f0f0;
   max-width: 480px;
   width: 100%;
@@ -30,8 +30,8 @@ main {
   border-left: 6px solid #e53935;
 
   box-shadow:
-    4px 0px 6px rgba(0, 0, 0, 0.05),   /* faint right */
-    0px 12px 24px rgba(0, 0, 0, 0.2); /* strong bottom */
+    4px 0px 6px rgba(0, 0, 0, 0.05),
+    0px 12px 24px rgba(0, 0, 0, 0.2);
 
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ main {
 }
 
 /* Hover lift */
-[data-testid="test-todo-card"]:hover {
+.card:hover {
   transform: translateY(-4px);
 
   box-shadow:
@@ -50,38 +50,38 @@ main {
 }
 
 /* HEADER */
-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-header div {
+.header div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 /* TITLE */
-[data-testid="test-todo-title"] {
+.title {
   font-size: 1.2rem;
   font-weight: 600;
   flex: 1;
   padding-bottom: 0;
-  margin-bottom: 2px; 
+  margin-bottom: 2px;
 }
 
 /* DESCRIPTION */
-[data-testid="test-todo-description"] {
+.description {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.4;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 /* PRIORITY */
-[data-testid="test-todo-priority"] {
+.priority {
   font-size: 0.75rem;
   padding: 4px 8px;
   border-radius: 999px;
@@ -91,7 +91,7 @@ header div {
 }
 
 /* STATUS */
-[data-testid="test-todo-status"] {
+.status {
   display: inline-block;
   font-size: 0.75rem;
   padding: 4px 10px;
@@ -108,24 +108,24 @@ section time {
   font-size: 0.9rem;
 }
 
-[data-testid="test-todo-due-date"] {
+.due-date {
   color: #666;
 }
 
-[data-testid="test-todo-time-remaining"] {
+.time-remaining {
   font-weight: 600;
   margin-top: 4px;
 }
 
 /* TAGS */
-[data-testid="test-todo-tags"] {
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   list-style: none;
 }
 
-[data-testid="test-todo-tags"] li {
+.tags li {
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
@@ -134,16 +134,16 @@ section time {
 }
 
 /* FOOTER */
-footer {
+.footer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
 /* CHECKBOX */
-[data-testid="test-todo-complete-toggle"] + label {
+.complete-toggle + label {
   cursor: pointer;
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   color: #444;
 }
 
@@ -151,7 +151,7 @@ input[type="checkbox"] {
   accent-color: #444;
 }
 
-/* BUTTON  */
+/* BUTTON */
 button {
   padding: 6px 12px;
   border-radius: 6px;
@@ -182,32 +182,31 @@ input:focus {
   opacity: 0.7;
 }
 
-.completed [data-testid="test-todo-title"] {
+.completed .title {
   text-decoration: line-through;
   color: #888;
 }
 
-.completed [data-testid="test-todo-description"] {
+.completed .description {
   text-decoration: line-through;
 }
 
-.completed [data-testid="test-todo-status"] {
+.completed .status {
   background: #d1e7dd;
   color: #0f5132;
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
-  [data-testid="test-todo-card"] {
+  .card {
     transform: none;
   }
 
-  header {
+  .header {
     flex-direction: row;
   }
-  
-  footer {
 
+  .footer {
     justify-content: space-between;
   }
 }
