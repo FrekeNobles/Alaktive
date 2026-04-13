@@ -27,7 +27,7 @@ main {
   padding: 20px;
   border-radius: 12px;
 
-  border-left: 6px solid #e53935;
+  /* border-left: 6px solid #e53935; */
 
   box-shadow:
     4px 0px 6px rgba(0, 0, 0, 0.05),
@@ -75,10 +75,11 @@ main {
 }
 
 /* PRIORITY */
-/* Priority Borders */
 
+/* Priority Borders */
 .priority-high {
   border-left: 6px solid #e53935;
+  
 }
 
 .priority-medium {
@@ -87,15 +88,16 @@ main {
 
 .priority-low {
   border-left: 6px solid #43a047;
+
 }
 
 .priority {
   font-size: 0.75rem;
   padding: 4px 8px;
   border-radius: 999px;
+  font-weight: 600;
   background: #ffe5e5;
   color: #c62828;
-  font-weight: 600;
 }
 
 /* STATUS */
