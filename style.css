@@ -75,6 +75,20 @@ main {
 }
 
 /* PRIORITY */
+/* Priority Borders */
+
+.priority-high {
+  border-left: 6px solid #e53935;
+}
+
+.priority-medium {
+  border-left: 6px solid #f9a825;
+}
+
+.priority-low {
+  border-left: 6px solid #43a047;
+}
+
 .priority {
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -146,6 +160,12 @@ input[type="checkbox"] {
 }
 
 /* BUTTON */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+
 button {
   padding: 6px 12px;
   border-radius: 6px;
@@ -181,9 +201,9 @@ input:focus {
   color: #888;
 }
 
-.completed .description {
+/* .completed .description {
   text-decoration: line-through;
-}
+} */
 
 .completed .status {
   background: #d1e7dd;
@@ -200,7 +220,17 @@ input:focus {
     flex-direction: row;
   }
 
+  .status-section {
+    display: flex;
+    justify-content: center;
+  }
+
   .footer {
     justify-content: space-between;
   }
+
+  .actions {
+  display: flex;
+  gap: 8px;
+}
 }
