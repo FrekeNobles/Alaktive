@@ -83,3 +83,14 @@ function applyPriorityStyles() {
 
 applyPriorityStyles();
 
+
+//EDIT AND DELETE BUTTONS ALERT
+
+editButton.addEventListener ("click", () => {
+    window.alert("This would pop up edit task modal");
+})
+
+deleteButton.addEventListener ("click", () => {
+    window.alert("This would delete the task")
+})
+
