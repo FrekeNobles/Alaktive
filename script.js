@@ -8,6 +8,18 @@ const priorityElement = document.querySelector(".priority");
 const editButton = document.querySelector(".edit-btn");
 const deleteButton = document.querySelector(".delete-btn")
 const cancelBtn = document.querySelector(".cancel-btn");
+const saveBtn = document.querySelector(".save-btn");
+// Display elements
+const titleEl = document.querySelector(".title");
+const descriptionEl = document.querySelector(".description");
+const priorityEl = document.querySelector(".priority");
+const dueDateEl = document.querySelector(".due-date");
+// Form elements
+const titleInput = document.querySelector("#edit-title");
+const descriptionInput = document.querySelector("#edit-description");
+const prioritySelect = document.querySelector("#edit-priority");
+const dateInput = document.querySelector("#edit-date");
+
 
 //CHECKBOX BEHAVIOUR
 checkbox.addEventListener("change", () => {
@@ -58,7 +70,7 @@ function updateTimeRemaining() {
 updateTimeRemaining();
 
 // Update every 60 seconds
-setInterval(updateTimeRemaining, 60000);
+setInterval(updateTimeRemaining, 30000);
 
 
 
@@ -87,13 +99,54 @@ applyPriorityStyles();
 
 //EDIT AND DELETE BUTTONS ALERT
 
-// Enter edit mode
+
 editButton.addEventListener("click", () => {
+    // Fill inputs with current values
+  titleInput.value = titleEl.textContent;
+  descriptionInput.value = descriptionEl.textContent;
+
+  prioritySelect.value = priorityEl.dataset.priority;
+
+  // Convert datetime to input format
+  const rawDate = dueDateEl.getAttribute("datetime");
+  const formatted = rawDate.slice(0, 16); // "YYYY-MM-DDTHH:MM"
+  dateInput.value = formatted;
+    // Enter edit mode
   card.classList.add("editing");
 });
 
 // Exit edit mode
 cancelBtn.addEventListener("click", () => {
+  card.classList.remove("editing");
+});
+
+//Save edited file to DOM
+saveBtn.addEventListener("click", () => {
+  // Update title
+  titleEl.textContent = titleInput.value;
+
+  // Update description
+  descriptionEl.textContent = descriptionInput.value;
+
+  // Update priority
+  const newPriority = prioritySelect.value;
+  priorityEl.dataset.priority = newPriority;
+  priorityEl.textContent = newPriority.charAt(0).toUpperCase() + newPriority.slice(1);
+
+  applyPriorityStyles(); // reuse your existing function
+
+  // Update due date
+  const newDate = dateInput.value;
+
+  if (newDate) {
+    const isoDate = new Date(newDate).toISOString();
+    dueDateEl.setAttribute("datetime", isoDate);
+
+    // Update visible text (simple format)
+    dueDateEl.textContent = `Due ${new Date(newDate).toDateString()}`;
+  }
+
+  // Exit edit mode
   card.classList.remove("editing");
 });
 
