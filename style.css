@@ -74,7 +74,8 @@ main {
 .card.editing .description,
 .card.editing .status-section,
 .card.editing .dates,
-.card.editing .tags-section {
+.card.editing .tags-section,
+ .card.editing .footer{
   display: none;
 }
 

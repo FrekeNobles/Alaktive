@@ -7,6 +7,7 @@ const dueDateElement = document.querySelector(".due-date");
 const priorityElement = document.querySelector(".priority");
 const editButton = document.querySelector(".edit-btn");
 const deleteButton = document.querySelector(".delete-btn")
+const cancelBtn = document.querySelector(".cancel-btn");
 
 //CHECKBOX BEHAVIOUR
 checkbox.addEventListener("change", () => {
@@ -86,9 +87,15 @@ applyPriorityStyles();
 
 //EDIT AND DELETE BUTTONS ALERT
 
-editButton.addEventListener ("click", () => {
-    window.alert("This would pop up edit task modal");
-})
+// Enter edit mode
+editButton.addEventListener("click", () => {
+  card.classList.add("editing");
+});
+
+// Exit edit mode
+cancelBtn.addEventListener("click", () => {
+  card.classList.remove("editing");
+});
 
 deleteButton.addEventListener ("click", () => {
     window.alert("This would delete the task")
