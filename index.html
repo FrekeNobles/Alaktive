@@ -64,6 +64,61 @@
         </ul>
       </section>
 
+    <section 
+      class="edit-form" 
+      data-testid="test-todo-edit-form"
+    >
+
+      <div>
+        <label for="edit-title">Title</label>
+        <input 
+          id="edit-title"
+          type="text"
+          data-testid="test-todo-edit-title-input"
+        />
+      </div>
+
+      <div>
+        <label for="edit-description">Description</label>
+        <textarea 
+          id="edit-description"
+          data-testid="test-todo-edit-description-input"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="edit-priority">Priority</label>
+        <select 
+          id="edit-priority"
+          data-testid="test-todo-edit-priority-select"
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="edit-date">Due Date</label>
+        <input 
+          id="edit-date"
+          type="datetime-local"
+          data-testid="test-todo-edit-due-date-input"
+        />
+      </div>
+
+      <div class="edit-actions">
+        <button class="save-btn" type="button" data-testid="test-todo-save-button">
+          Save
+        </button>
+
+        <button class="cancel-btn" type="button" data-testid="test-todo-cancel-button">
+          Cancel
+        </button>
+      </div>
+
+    </section>  
+
       <footer class="footer">
         <div class="complete">
           <input 
