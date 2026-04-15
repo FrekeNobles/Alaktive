@@ -66,7 +66,84 @@ main {
 
 /* When editing */
 .card.editing .edit-form {
-  display: block;
+   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.edit-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edit-form label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus,
+.edit-form select:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+.edit-form textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.edit-actions {
+   display: flex;
+   flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end; 
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-actions button {
+  width: auto;
+}
+
+.save-btn {
+   background: #3f3f3f;
+  color: #fff;
+  cursor: pointer;
+ 
+}
+
+.save-btn:hover {
+   background: #fff;
+  border-color: #3f3f3f;
+  color: #3f3f3f;
+}
+
+.cancel-btn {
+ background: #fff;
+  border-color: #3f3f3f;
+  color: #3f3f3f;
+}
+
+.cancel-btn:hover {
+  background: #3f3f3f;
+  color: #fff;
+  
 }
 
 /* Hide normal content when editing */
@@ -204,7 +281,6 @@ button {
   color: #fff;
   cursor: pointer;
   font-size: 0.8rem;
-
   border: 2px solid transparent;
   transition: 0.2s ease;
 }
@@ -265,4 +341,12 @@ input:focus {
   display: flex;
   gap: 8px;
 }
+
+  .edit-actions {
+    flex-direction: column;
+  }
+
+  .edit-actions button {
+    width: 100%;
+  }
 }
