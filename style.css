@@ -60,6 +60,24 @@ main {
     0px 18px 30px rgba(0, 0, 0, 0.22);
 }
 
+.edit-form {
+  display: none;
+}
+
+/* When editing */
+.card.editing .edit-form {
+  display: block;
+}
+
+/* Hide normal content when editing */
+.card.editing .header,
+.card.editing .description,
+.card.editing .status-section,
+.card.editing .dates,
+.card.editing .tags-section {
+  display: none;
+}
+
 /* HEADER */
 .header {
   display: flex;
