@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
   color: #1a1a1a;
 }
 
-/* Page Layout */
+/* PAGE */
 main {
   min-height: 100vh;
   display: flex;
@@ -33,28 +34,30 @@ main {
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 
   transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
-/* Priority Borders */
-.card.priority-high {
-  border-left: 6px solid #e53935;
+/* PRIORITY BORDER */
+.card.priority-high { border-left: 6px solid #e53935; }
+.card.priority-medium { border-left: 6px solid #f9a825; }
+.card.priority-low { border-left: 6px solid #43a047; }
+
+/* PRIORITY INDICATOR DOT */
+.priority-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
-.card.priority-medium {
-  border-left: 6px solid #f9a825;
-}
+.card.priority-high .priority-indicator { background: #e53935; }
+.card.priority-medium .priority-indicator { background: #f9a825; }
+.card.priority-low .priority-indicator { background: #43a047; }
 
-.card.priority-low {
-  border-left: 6px solid #43a047;
-}
-
-/* Hover lift */
+/* HOVER */
 .card:hover {
   transform: translateY(-4px);
-
   box-shadow:
     6px 0px 10px rgba(0, 0, 0, 0.06),
     0px 18px 30px rgba(0, 0, 0, 0.22);
@@ -64,18 +67,18 @@ main {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
+}
+
+/* TITLE GROUP */
+.title-group {
+  flex: 1;
 }
 
 /* TITLE */
 .title {
   font-size: 1.2rem;
   font-weight: 600;
-  flex: 1;
-  padding-bottom: 0;
-  margin-bottom: 2px;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 /* DESCRIPTION */
@@ -83,7 +86,6 @@ main {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.4;
-  margin-top: 0;
 }
 
 /* PRIORITY */
@@ -98,42 +100,61 @@ main {
   background: #ffe5e5;
   color: #c62828;
 }
-
 .priority.priority-medium {
   background: #fff8e1;
   color: #f57f17;
 }
-
 .priority.priority-low {
   background: #e8f5e9;
   color: #2e7d32;
 }
 
 /* STATUS */
+.status-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .status {
-  display: inline-block;
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
   background: #f1e46f;
   color: #504803;
-  width: fit-content;
 }
 
-/* TIME */
-.dates time {
-  display: block;
+/* STATUS STATES */
+.card[data-status="done"] .status {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.card[data-status="in-progress"] .status {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* DATES */
+.dates {
   text-align: center;
-  font-size: 0.9rem;
 }
 
 .due-date {
+  font-size: 0.85rem;
   color: #666;
 }
 
 .time-remaining {
   font-weight: 600;
   margin-top: 4px;
+}
+
+/* OVERDUE */
+.overdue-indicator {
+  color: #c62828;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 /* TAGS */
@@ -144,7 +165,7 @@ main {
   list-style: none;
 }
 
-.tags li {
+.tag {
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 999px;
@@ -156,7 +177,7 @@ main {
 .footer {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
 }
 
 /* CHECKBOX */
@@ -166,14 +187,10 @@ main {
   color: #444;
 }
 
-input[type="checkbox"] {
-  accent-color: #444;
-}
-
 /* BUTTONS */
 .actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 button {
@@ -199,77 +216,81 @@ button:hover {
   color: #3f3f3f;
 }
 
-.cancel-btn:hover {
-  background: #3f3f3f;
-  color: #fff;
-}
-
-/* FOCUS STATES */
+/* FOCUS */
 button:focus,
-input:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
 }
 
-/* IN-PLACE EDIT INPUTS */
+/* ========================= */
+/* 🔥 INLINE EDIT SYSTEM */
+/* ========================= */
+
+/* Hide edit inputs by default */
 .edit-title,
 .edit-description,
 .edit-priority,
 .edit-due-date,
-.edit-status {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  font-size: 0.85rem;
-  font-family: inherit;
-  background: #fff;
-  outline: none;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
+.save-btn,
+.cancel-btn {
+  display: none;
 }
 
-.edit-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  flex: 1;
+/* Show in edit mode */
+.card.editing .edit-title,
+.card.editing .edit-description,
+.card.editing .edit-priority,
+.card.editing .edit-due-date {
+  display: block;
+}
+
+/* Hide display elements in edit mode */
+.card.editing .title,
+.card.editing .description,
+.card.editing .priority,
+.card.editing .due-date {
+  display: none;
+}
+
+/* Buttons toggle */
+.card.editing .edit-btn,
+.card.editing .delete-btn {
+  display: none;
+}
+
+.card.editing .save-btn,
+.card.editing .cancel-btn {
+  display: inline-block;
+}
+
+/* INPUT STYLING */
+.edit-title,
+.edit-description,
+.edit-priority,
+.edit-due-date {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  width: 100%;
+  font-family: inherit;
 }
 
 .edit-description {
-  resize: none;
   min-height: 80px;
-  font-size: 0.9rem;
-  color: #555;
+  resize: none;
 }
 
-.edit-priority,
-.edit-status {
-  width: auto;
-  font-size: 0.75rem;
+/* COMPLETED */
+.card.completed {
+  opacity: 0.8;
 }
 
-.edit-title:focus,
-.edit-description:focus,
-.edit-priority:focus,
-.edit-due-date:focus,
-.edit-status:focus {
-  border-color: #000;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
-}
-
-/* COMPLETED STATE */
-.completed {
-  opacity: 0.85;
-}
-
-.completed .title {
+.card.completed .title {
   text-decoration: line-through;
   color: #888;
-  transition: all 0.2s ease;
-}
-
-.completed .status {
-  background: #d1e7dd;
-  color: #0f5132;
 }
 
 /* RESPONSIVE */
@@ -278,21 +299,14 @@ input:focus {
     transform: none;
   }
 
-  .header {
-    flex-direction: row;
-  }
-
   .status-section {
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .footer {
-    justify-content: space-between;
-  }
-
-  .actions {
-    display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
   }
 }

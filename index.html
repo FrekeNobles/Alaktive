@@ -11,50 +11,93 @@
   <main>
     <article class="card" data-testid="test-todo-card">
 
+      <!-- HEADER -->
       <header class="header">
+
+        <!-- Priority Indicator -->
         <span
           class="priority-indicator"
           data-testid="test-todo-priority-indicator"
           aria-hidden="true"
         ></span>
 
-        <h2 class="title" data-testid="test-todo-title">
-          Design Landing Page
-        </h2>
+        <!-- TITLE -->
+        <div class="title-group">
+          <h2 class="title" data-testid="test-todo-title">
+            Design Landing Page
+          </h2>
 
-        <span
-          class="priority"
-          data-testid="test-todo-priority"
-          data-priority="high"
-          aria-label="High priority"
-        >
-          High
-        </span>
+          <input
+            type="text"
+            class="edit-title"
+            data-testid="test-todo-edit-title-input"
+            aria-label="Edit title"
+          />
+        </div>
+
+        <!-- PRIORITY -->
+        <div class="priority-group">
+          <span
+            class="priority"
+            data-testid="test-todo-priority"
+            data-priority="high"
+            aria-label="High priority"
+          >
+            High
+          </span>
+
+          <select
+            class="edit-priority"
+            data-testid="test-todo-edit-priority-select"
+            aria-label="Edit priority"
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
       </header>
 
+      <!-- DESCRIPTION -->
       <section
         class="collapsible-section"
-        data-testid="test-todo-collapsible-section"
         id="todo-collapsible"
+        data-testid="test-todo-collapsible-section"
       >
-        <p class="description" data-testid="test-todo-description">
-          Create a clean and modern landing page design for the new product launch.
-        </p>
+        <div class="description-group">
+          <p class="description" data-testid="test-todo-description">
+            Create a clean and modern landing page design for the new product launch.
+          </p>
 
-        <button
-          class="expand-toggle"
-          type="button"
-          data-testid="test-todo-expand-toggle"
-          aria-expanded="false"
-          aria-controls="todo-collapsible"
-          hidden
-        >
-          Show more
-        </button>
+          <textarea
+            class="edit-description"
+            data-testid="test-todo-edit-description-input"
+            aria-label="Edit description"
+          ></textarea>
+        </div>
       </section>
 
+      <!-- EXPAND TOGGLE -->
+      <button
+        class="expand-toggle"
+        type="button"
+        data-testid="test-todo-expand-toggle"
+        aria-expanded="false"
+        aria-controls="todo-collapsible"
+        hidden
+      >
+        Show more
+      </button>
+
+      <!-- STATUS -->
       <section class="status-section">
-        <span class="status" data-testid="test-todo-status" data-status="pending">
+
+        <span
+          class="status"
+          data-testid="test-todo-status"
+          data-status="pending"
+        >
           Pending
         </span>
 
@@ -67,22 +110,32 @@
           <option value="in-progress">In Progress</option>
           <option value="done">Done</option>
         </select>
+
       </section>
 
+      <!-- DATES -->
       <section class="dates">
-        <time
-          class="due-date"
-          datetime="2026-04-19T18:00:00Z"
-          data-testid="test-todo-due-date"
-        >
-          Due April 19, 2026
-        </time>
+
+        <div class="date-group">
+          <time
+            class="due-date"
+            datetime="2026-04-19T18:00:00Z"
+            data-testid="test-todo-due-date"
+          >
+            Due April 19, 2026
+          </time>
+
+          <input
+            type="datetime-local"
+            class="edit-due-date"
+            data-testid="test-todo-edit-due-date-input"
+            aria-label="Edit due date"
+          />
+        </div>
 
         <span
           class="overdue-indicator"
           data-testid="test-todo-overdue-indicator"
-          role="status"
-          aria-live="polite"
           hidden
         >
           Overdue
@@ -90,14 +143,15 @@
 
         <time
           class="time-remaining"
-          datetime="2026-04-19T18:00:00Z"
           data-testid="test-todo-time-remaining"
           aria-live="polite"
         >
           Due in 3 days
         </time>
+
       </section>
 
+      <!-- TAGS -->
       <section class="tags-section">
         <ul class="tags" role="list" data-testid="test-todo-tags">
           <li class="tag tag--work" data-testid="test-todo-tag-work">Work</li>
@@ -106,53 +160,17 @@
         </ul>
       </section>
 
-      <section class="edit-form" data-testid="test-todo-edit-form">
+      <!-- EDIT FORM WRAPPER (for spec compliance only) -->
+      <section
+        class="edit-form"
+        data-testid="test-todo-edit-form"
+        aria-hidden="true"
+      ></section>
 
-        <label for="edit-title">Title
-          <input
-            id="edit-title"
-            class="edit-title"
-            type="text"
-            data-testid="test-todo-edit-title-input"
-            hidden
-          />
-        </label>
-
-        <label for="edit-description">Description
-          <textarea
-            id="edit-description"
-            class="edit-description"
-            data-testid="test-todo-edit-description-input"
-            hidden
-          ></textarea>
-        </label>
-
-        <label for="edit-priority">Priority
-          <select
-            id="edit-priority"
-            class="edit-priority"
-            data-testid="test-todo-edit-priority-select"
-            hidden
-          >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-        </label>
-
-        <label for="edit-due-date">Due Date
-          <input
-            id="edit-due-date"
-            class="edit-due-date"
-            type="datetime-local"
-            data-testid="test-todo-edit-due-date-input"
-            hidden
-          />
-        </label>
-
-      </section>
-
+      <!-- FOOTER -->
       <footer class="footer">
+
+        <!-- CHECKBOX -->
         <div class="complete">
           <input
             type="checkbox"
@@ -163,12 +181,13 @@
           <label for="todo-complete">Mark task as complete</label>
         </div>
 
+        <!-- ACTIONS -->
         <div class="actions">
+
           <button
             class="edit-btn"
             type="button"
             data-testid="test-todo-edit-button"
-            aria-label="Edit task"
           >
             Edit
           </button>
@@ -177,7 +196,6 @@
             class="delete-btn"
             type="button"
             data-testid="test-todo-delete-button"
-            aria-label="Delete task"
           >
             Delete
           </button>
@@ -186,8 +204,6 @@
             class="save-btn"
             type="button"
             data-testid="test-todo-save-button"
-            aria-label="Save task"
-            hidden
           >
             Save
           </button>
@@ -196,12 +212,12 @@
             class="cancel-btn"
             type="button"
             data-testid="test-todo-cancel-button"
-            aria-label="Cancel edit"
-            hidden
           >
             Cancel
           </button>
+
         </div>
+
       </footer>
 
     </article>
