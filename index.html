@@ -12,41 +12,83 @@
     <article class="card" data-testid="test-todo-card">
 
       <header class="header">
+        <span
+          class="priority-indicator"
+          data-testid="test-todo-priority-indicator"
+          aria-hidden="true"
+        ></span>
+
         <h2 class="title" data-testid="test-todo-title">
           Design Landing Page
         </h2>
 
-        <span 
+        <span
           class="priority"
           data-testid="test-todo-priority"
           data-priority="high"
           aria-label="High priority"
         >
           High
-      </span>
-
+        </span>
       </header>
 
-      <p class="description" data-testid="test-todo-description">
-        Create a clean and modern landing page design for the new product launch.
-      </p>
- 
+      <section
+        class="collapsible-section"
+        data-testid="test-todo-collapsible-section"
+        id="todo-collapsible"
+      >
+        <p class="description" data-testid="test-todo-description">
+          Create a clean and modern landing page design for the new product launch.
+        </p>
+
+        <button
+          class="expand-toggle"
+          type="button"
+          data-testid="test-todo-expand-toggle"
+          aria-expanded="false"
+          aria-controls="todo-collapsible"
+          hidden
+        >
+          Show more
+        </button>
+      </section>
+
       <section class="status-section">
         <span class="status" data-testid="test-todo-status" data-status="pending">
           Pending
         </span>
+
+        <select
+          class="status-control"
+          data-testid="test-todo-status-control"
+          aria-label="Change task status"
+        >
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
       </section>
 
       <section class="dates">
-        <time 
+        <time
           class="due-date"
-          datetime="2026-04-19T18:00:00Z" 
+          datetime="2026-04-19T18:00:00Z"
           data-testid="test-todo-due-date"
         >
           Due April 19, 2026
         </time>
 
-        <time 
+        <span
+          class="overdue-indicator"
+          data-testid="test-todo-overdue-indicator"
+          role="status"
+          aria-live="polite"
+          hidden
+        >
+          Overdue
+        </span>
+
+        <time
           class="time-remaining"
           datetime="2026-04-19T18:00:00Z"
           data-testid="test-todo-time-remaining"
@@ -64,66 +106,57 @@
         </ul>
       </section>
 
-    <section 
-      class="edit-form" 
-      data-testid="test-todo-edit-form"
-    >
+      <section class="edit-form" data-testid="test-todo-edit-form">
 
-      <div>
-        <label for="edit-title">Title</label>
-        <input 
-          id="edit-title"
-          type="text"
-          data-testid="test-todo-edit-title-input"
-        />
-      </div>
+        <label for="edit-title">Title
+          <input
+            id="edit-title"
+            class="edit-title"
+            type="text"
+            data-testid="test-todo-edit-title-input"
+            hidden
+          />
+        </label>
 
-      <div>
-        <label for="edit-description">Description</label>
-        <textarea 
-          id="edit-description"
-          data-testid="test-todo-edit-description-input"
-        ></textarea>
-      </div>
+        <label for="edit-description">Description
+          <textarea
+            id="edit-description"
+            class="edit-description"
+            data-testid="test-todo-edit-description-input"
+            hidden
+          ></textarea>
+        </label>
 
-      <div>
-        <label for="edit-priority">Priority</label>
-        <select 
-          id="edit-priority"
-          data-testid="test-todo-edit-priority-select"
-        >
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
+        <label for="edit-priority">Priority
+          <select
+            id="edit-priority"
+            class="edit-priority"
+            data-testid="test-todo-edit-priority-select"
+            hidden
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
 
-      <div>
-        <label for="edit-date">Due Date</label>
-        <input 
-          id="edit-date"
-          type="datetime-local"
-          data-testid="test-todo-edit-due-date-input"
-        />
-      </div>
+        <label for="edit-due-date">Due Date
+          <input
+            id="edit-due-date"
+            class="edit-due-date"
+            type="datetime-local"
+            data-testid="test-todo-edit-due-date-input"
+            hidden
+          />
+        </label>
 
-      <aside class="edit-actions">
-        <button class="save-btn" type="button" data-testid="test-todo-save-button">
-          Save
-        </button>
-
-        <button class="cancel-btn" type="button" data-testid="test-todo-cancel-button">
-          Cancel
-        </button>
-      </aside>
-
-    </section>  
+      </section>
 
       <footer class="footer">
         <div class="complete">
-          <input 
-            type="checkbox" 
-            id="todo-complete" 
+          <input
+            type="checkbox"
+            id="todo-complete"
             class="complete-toggle"
             data-testid="test-todo-complete-toggle"
           />
@@ -131,7 +164,7 @@
         </div>
 
         <div class="actions">
-          <button 
+          <button
             class="edit-btn"
             type="button"
             data-testid="test-todo-edit-button"
@@ -140,13 +173,33 @@
             Edit
           </button>
 
-          <button 
+          <button
             class="delete-btn"
             type="button"
             data-testid="test-todo-delete-button"
             aria-label="Delete task"
           >
             Delete
+          </button>
+
+          <button
+            class="save-btn"
+            type="button"
+            data-testid="test-todo-save-button"
+            aria-label="Save task"
+            hidden
+          >
+            Save
+          </button>
+
+          <button
+            class="cancel-btn"
+            type="button"
+            data-testid="test-todo-cancel-button"
+            aria-label="Cancel edit"
+            hidden
+          >
+            Cancel
           </button>
         </div>
       </footer>
