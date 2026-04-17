@@ -124,6 +124,7 @@ main {
   font-weight: 600;
 }
 
+
 .priority.priority-high {
   background: #ffe5e5;
   color: #c62828;
@@ -150,6 +151,16 @@ main {
   border-radius: 999px;
   background: #f1e46f;
   color: #504803;
+}
+
+.status-control{
+  padding: 8px;
+  border-radius: 6px;
+  /* border: 1px solid #ddd; */
+  font-family: inherit;
+  border: none;
+  background: #f0f0f0;
+
 }
 
 /* STATUS STATES */
@@ -262,9 +273,7 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
 }
 
-/* ========================= */
-/* 🔥 INLINE EDIT SYSTEM */
-/* ========================= */
+/*  INLINE EDIT SYSTEM */
 
 /* Hide edit inputs by default */
 .edit-title,
@@ -307,17 +316,25 @@ select:focus {
 .edit-title,
 .edit-description,
 .edit-priority,
-.edit-due-date {
+.edit-due-date{
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   width: 100%;
   font-family: inherit;
+  border: none;
+  background: #f0f0f0;
+}
+
+.edit-title{
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .edit-description {
   min-height: 80px;
   resize: none;
+ 
 }
 
 /* COMPLETED */

@@ -1,6 +1,5 @@
-// =========================
 // ELEMENT SELECTION
-// =========================
+
 const card = document.querySelector(".card");
 
 const checkbox = document.querySelector(".complete-toggle");
@@ -30,9 +29,7 @@ const descriptionInput = document.querySelector(".edit-description");
 const prioritySelect = document.querySelector(".edit-priority");
 const dateInput = document.querySelector(".edit-due-date");
 
-// =========================
 // PRIORITY SYSTEM
-// =========================
 const priorityMap = {
   high: "High",
   medium: "Medium",
@@ -53,9 +50,7 @@ function applyPriorityStyles() {
 
 applyPriorityStyles();
 
-// =========================
 // STATUS SYSTEM
-// =========================
 function updateStatus(newStatus) {
   const statusMap = {
     pending: "Pending",
@@ -84,9 +79,7 @@ checkbox.addEventListener("change", () => {
   updateStatus(checkbox.checked ? "done" : "pending");
 });
 
-// =========================
 // TIME SYSTEM (UPGRADED)
-// =========================
 let timer;
 
 function updateTime() {
@@ -146,9 +139,7 @@ function startTimer() {
 
 startTimer();
 
-// =========================
 // EDIT MODE SYSTEM
-// =========================
 function enterEditMode() {
   // Populate inputs
   titleInput.value = titleEl.textContent.trim();
@@ -166,9 +157,7 @@ function exitEditMode() {
   card.classList.remove("editing");
 }
 
-// =========================
 // SAVE SYSTEM
-// =========================
 function saveChanges() {
   // Title
   titleEl.textContent = titleInput.value.trim();
@@ -204,9 +193,7 @@ function saveChanges() {
   exitEditMode();
 }
 
-// =========================
 // EVENTS
-// =========================
 editBtn.addEventListener("click", enterEditMode);
 cancelBtn.addEventListener("click", exitEditMode);
 saveBtn.addEventListener("click", saveChanges);
