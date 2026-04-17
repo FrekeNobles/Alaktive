@@ -113,6 +113,9 @@ main {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+
+  line-clamp: 2; /* modern standard */
+
   overflow: hidden;
 }
 
@@ -156,9 +159,8 @@ main {
 .status-control{
   padding: 8px;
   border-radius: 6px;
-  /* border: 1px solid #ddd; */
+  border: 1px solid #ddd;
   font-family: inherit;
-  border: none;
   background: #f0f0f0;
 
 }

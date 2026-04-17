@@ -36,6 +36,8 @@ const priorityMap = {
   low: "Low"
 };
 
+let lastFocusedElement = null; // i'll be using this to return fucus
+
 function applyPriorityStyles() {
   const priority = priorityEl.dataset.priority;
 
@@ -64,6 +66,7 @@ function updateStatus(newStatus) {
 
   // Sync checkbox
   checkbox.checked = newStatus === "done";
+  statusControl.value = newStatus;
 
   // Completed styles
   card.classList.toggle("completed", newStatus === "done");
@@ -141,6 +144,9 @@ startTimer();
 
 // EDIT MODE SYSTEM
 function enterEditMode() {
+  // Save where focus came from
+  lastFocusedElement = document.activeElement;
+
   // Populate inputs
   titleInput.value = titleEl.textContent.trim();
   descriptionInput.value = descriptionEl.textContent.trim();
@@ -151,10 +157,18 @@ function enterEditMode() {
   dateInput.value = rawDate.slice(0, 16);
 
   card.classList.add("editing");
+  titleInput.focus();
 }
 
 function exitEditMode() {
   card.classList.remove("editing");
+
+  // Restore focus to Edit button (or last focused element)
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  } else {
+    editBtn.focus();
+  }
 }
 
 // SAVE SYSTEM
